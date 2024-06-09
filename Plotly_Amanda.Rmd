@@ -1,0 +1,137 @@
+---
+title: "Ploty pt.1"
+author: "Amanda de Faria Costa de Azevedo - 231033880"
+date: "2024-06-09"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages("plotly")
+install.packages("htmlwidgets")
+
+```
+
+```{r}
+
+#### Sintaxe Geral plot_ly() #### 
+# A função plot_ly cria um objeto plotly e produz visualizações interativas com base nos dados e argumentos fornecidos
+# plot_ly (data, x, y, type, mode, color, size,....)
+plot_ly()
+# data = um dataframe
+# valores dos eixos x e y
+# type = especifica o tipo de plotagem ou traço, como 'histogram', 'scatter', 'bar', 'box', 'heatmap', 'histogram', 'histogram2d', 'histogram2dcontour', 'pie', 'contour', 'scatter3d', 
+# 'surface', 'mesh3d', 'scattergeo', 'choropleth', 'scattergl', 'scatterternary', 'scattermapbox', 'area'
+# mode = especifica o modo, como 'line', 'points', 'markers'
+# color = especifica a cor dos pontos de dados, geralmente uma função de I() para evitar escala
+# colors = paleta de cores do colourbrewer, vetor de cores em formato hexadecimal
+# size = nome ou expressão que define o tamanho dos pontos de dados
+# Podemos usar outras funções como layout() para formatação dos eixos'
+# e outras funções que vêm com o pacote plotly
+```
+
+
+```{r}
+#Vamos criar um gráfico de dispersão (scatter plot) usando o ggplot2 com o conjunto de dados mtcars.
+
+# Carregar os pacotes necessários
+library(ggplot2)
+library(plotly)
+
+# Criar um gráfico de dispersão usando ggplot2
+p <- ggplot(mtcars, aes(x = wt, y = mpg, color = factor(gear))) +
+  geom_point(size = 3) +
+  labs(title = "Relação entre Peso e MPG",
+       x = "Peso do Carro (1000 lbs)",
+       y = "Milhas por Galão",
+       color = "Número de Marchas") +
+  theme_minimal()
+
+# Converter o gráfico ggplot2 em um gráfico plotly interativo
+p_interativo <- ggplotly(p)
+
+# Mostrar o gráfico interativo
+p_interativo
+
+#O plotly é altamente compatível com ggplot2, pois permite converter gráficos ggplot2 em gráficos interativos com facilidade. A função ggplotly() preserva a maioria das características do gráfico original
+```
+
+```{r}
+## Outras funcionalidades
+```
+
+```{r}
+# Gráfico de Barras (Bar Plot)
+
+# Criar um gráfico de barras
+fig2 <- plot_ly(data = mtcars, x = ~factor(cyl), y = ~mpg, type = 'bar')
+
+# Adicionar título e rótulos dos eixos
+fig2 <- fig2 %>%
+  layout(title = 'Consumo Médio de Combustível por Número de Cilindros',
+         xaxis = list(title = 'Número de Cilindros'),
+         yaxis = list(title = 'Milhas por Galão'))
+
+# Mostrar o gráfico
+fig2
+```
+
+```{r}
+# Histograma
+# Criar um histograma
+fig3 <- plot_ly(data = mtcars, x = ~mpg, type = 'histogram')
+
+# Adicionar título e rótulo do eixo x
+fig3 <- fig3 %>%
+  layout(title = 'Distribuição das Milhas por Galão',
+         xaxis = list(title = 'Milhas por Galão'))
+
+# Mostrar o gráfico
+fig3
+```
+
+```{r}
+# Gráfico de Caixa (Box Plot)
+# Criar um gráfico de caixa
+fig4 <- plot_ly(data = mtcars, y = ~mpg, type = 'box')
+
+# Adicionar título e rótulo do eixo y
+fig4 <- fig4 %>%
+  layout(title = 'Distribuição das Milhas por Galão',
+         yaxis = list(title = 'Milhas por Galão'))
+
+# Mostrar o gráfico
+fig4
+```
+
+```{r}
+# Gráfico de Superfície 3D
+# Criar dados para o gráfico de superfície 3D
+x <- seq(-10, 10, length.out = 100)
+y <- seq(-10, 10, length.out = 100)
+z <- outer(x, y, function(x, y) cos(sqrt(x^2 + y^2)))
+
+# Criar um gráfico de superfície 3D
+fig5 <- plot_ly(x = ~x, y = ~y, z = ~z, type = 'surface')
+
+# Adicionar título
+fig5 <- fig5 %>%
+  layout(title = 'Gráfico de Superfície 3D')
+
+# Mostrar o gráfico
+fig5
+```
+
+```{r}
+## Temos outras funcionalidades! Como gráficos de pizza (Pie Chart), Gráfico de mapa de calor (Heatmap) e etc. 
+```
+
+
+
+
+
