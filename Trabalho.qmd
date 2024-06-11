@@ -1,0 +1,187 @@
+---
+title: "Quarto e Plotly"
+author: 
+- Muryllo Nunes
+- Amanda de Azevedo
+- Gustavo Preard
+- Matheus Augusto
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+format: revealjs
+footer: Uma apresentação de ferramentas
+transition: slide
+logo: imagens/quarto.png
+---
+
+##  {auto-animate="true"}
+
+::: {style="margin-top: 100px;"}
+Quarto
+:::
+
+##  {auto-animate="true"}
+
+::: {style="margin-top: 200px; font-size: 3em; color: #40719c;"}
+Quarto
+:::
+
+::: {style="text-align: right; margin-top: -300px;"}
+<img src="imagens/quarto.png" alt="Logo" style="width:500px;"/>
+:::
+
+## O que é Quarto?
+
+É uma ferramenta que combina a facilidade do Markdown com flexibilidade do poder de programação. Ele é projetado para simplificar o processo de criação de documentos dinâmicos e interativos, como relatórios, artigos científicos, apresentações e livros, integrando dados, códigos e visualizações de maneira agradável.
+
+## Por que usar Quarto?
+
+::: {.incremental}
+-   **Compatibilidade com Múltiplas Linguagens**: Funciona com R, Python, Julia e Observable.
+
+-   **Formatos Flexíveis**: Permite a criação de PDFs, Word, HTML, e-books, entre outros.
+
+-   **Publicação**: Facilita a publicação de documentos em várias plataformas, sendo um deles como um website.
+
+-   **Interatividade**: Suporte para gráficos interativos e outros elementos dinâmicos.
+:::
+
+## Praticidade {.scrollable auto-animate="true"}
+
+::: panel-tabset
+### Source {.scrollable}
+
+**Source**: Programação real.
+
+![](imagens/Source.png){width="800%"}
+
+### Visual {.scrollable}
+
+**Visual**: Preview sem ter que renderizar os slides.
+
+![](imagens/Visual.png){width="80%"}
+:::
+
+# Estrutura Inicial Quarto
+
+``` markdown
+---
+title: "Quarto e Plotly"
+author: 
+- Muryllo Nunes
+- Amanda de Azevedo
+- Gustavo Preard
+- Matheus Augusto
+date: ""r format(Sys.Date(), '%d %B %Y')""
+format: revealjs
+footer: Uma apresentação de ferramentas
+transition: slide
+logo: imagens/quarto.png
+---
+```
+
+[Voltar para o Slide 1](#slide=1)
+
+## Funcionamento Primordial {.scrollable auto-animate="true"}
+
+::: panel-tabset
+### Notação Rmarkdown
+
+**Em geral** você pode usar quase toda a sintaxe do Rmarkdown no Quarto como por exemplo:
+
+-   **chunks**
+-   **Headings**: para seus títulos é o mesmo comando do Markdown ***\#***
+-   **Imagens**: pode mostrar imagens no seu projeto usando o comando `![titulo](imagem/local/tipo_de_arquivo)`
+
+### Notação Quarto
+O dash/traço **-** serve para fazer listas.
+- lista
+- lista 2
+A maior parte da sintaxe do Quarto consiste em
+
+``` markdown
+::: {.comando}
+
+Texto Texto
+
+:::
+```
+:::
+
+## Funções 
+:::: panel-tabset
+
+### Incremental
+::: {.incremental}
+-
+  ```markdown
+  ::: {.incremental}
+  - **Isso é**
+  - **Uma demonstração**
+  :::
+  ```
+- **Isso é**
+- **Uma demonstração**
+
+:::
+
+### Fragments
+
+Basicamente consiste em diferentes tipos de revelação de elementos ou destaque
+
+
+```
+::: {.fragment .highlight-red}
+Destaque
+:::
+
+::: {.fragment .fade-in-}
+Fade-in
+:::
+```
+::: {.fragment .highlight-red}
+Destaque
+:::
+
+::: {.fragment .fade-in-}
+Fade-in
+:::
+::::
+
+# Table-
+
+### Conclusão
+
+### como isso é feito?
+
+```{r}
+library(rmarkdown)
+library(ggplot2)
+library(tidyverse)
+library(gt)
+library(readxl)
+theme_set(theme_minimal())
+exemplo <- read_csv("exemplo.csv")
+
+```
+
+::: columns
+::: column
+```{r}
+exemplo %>%
+  gt()
+
+```
+:::
+
+::: column
+```{r}
+
+ggplot(exemplo, aes(x = x, y = y, color = cor)) +
+  geom_point(size = 7, show.legend = FALSE) +
+  labs(x = NULL, y = NULL) +
+  scale_color_manual(values = c("yellow", "green")) +
+  theme_classic()
+```
+:::
+:::
+
+# Título Principal
