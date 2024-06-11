@@ -82,7 +82,7 @@ logo: imagens/quarto.png
 
 ## Funcionamento Primordial {.scrollable auto-animate="true"}
 
-::: panel-tabset
+:::: panel-tabset
 ### Notação Rmarkdown
 
 **Em geral** você pode usar quase toda a sintaxe do Rmarkdown no Quarto como por exemplo:
@@ -95,7 +95,7 @@ logo: imagens/quarto.png
 O dash/traço **-** serve para fazer listas.
 - lista
 - lista 2
-A maior parte da sintaxe do Quarto consiste em
+A maior parte da sintaxe do Quarto consiste em abrir blocos **:::** + {comando} 
 
 ``` markdown
 ::: {.comando}
@@ -133,7 +133,7 @@ Basicamente consiste em diferentes tipos de revelação de elementos ou destaque
 Destaque
 :::
 
-::: {.fragment .fade-in-}
+::: {.fragment .fade-in}
 Fade-in
 :::
 ```
@@ -141,47 +141,25 @@ Fade-in
 Destaque
 :::
 
-::: {.fragment .fade-in-}
+::: {.fragment .fade-in}
 Fade-in
 :::
+
+### Auto-Animate 
+É uma ferramenta poderosa e simples de usar. Você precisa apenas fornecer os parâmetros, e ela preencherá as lacunas criando uma animação fluida e interessante.
+#### Comandos importantes
+- **Width**: Altura.
+- **Height**:	Largura.
+- **Margin**: Margem ao redor de algum dos quatro cantos do slide.
+```
+::: {style="margin-top: 100px;"}
+teste
+::: {style="margin-bot: 300px;"}
+teste
+::: {style="margin-right: 400px;"}
+```
+
 ::::
 
-# Table-
 
-### Conclusão
 
-### como isso é feito?
-
-```{r}
-library(rmarkdown)
-library(ggplot2)
-library(tidyverse)
-library(gt)
-library(readxl)
-theme_set(theme_minimal())
-exemplo <- read_csv("exemplo.csv")
-
-```
-
-::: columns
-::: column
-```{r}
-exemplo %>%
-  gt()
-
-```
-:::
-
-::: column
-```{r}
-
-ggplot(exemplo, aes(x = x, y = y, color = cor)) +
-  geom_point(size = 7, show.legend = FALSE) +
-  labs(x = NULL, y = NULL) +
-  scale_color_manual(values = c("yellow", "green")) +
-  theme_classic()
-```
-:::
-:::
-
-# Título Principal
