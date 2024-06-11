@@ -1,5 +1,5 @@
 ---
-title: "Quarto e Plotly"
+title: "Quarto"
 author: 
 - Muryllo Nunes
 - Amanda de Azevedo
@@ -245,11 +245,4 @@ Plotly
 ::: {style="text-align: right; margin-top: -300px;"}
 <img src="imagens/plotly.png" alt="Logo" style="width:500px;"/>
 :::
-
-# O que é Plotly
-
-Plotly tem o objetivo de ser um framework Interativo para permitir uma análise gráfica mais profunda e mais prática de ser programada.
-
-
-
 
