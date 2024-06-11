@@ -14,6 +14,7 @@
   <meta name="author" content="Amanda de Azevedo">
   <meta name="author" content="Gustavo Preard">
   <meta name="author" content="Matheus Augusto">
+  <meta name="dcterms.date" content="2024-06-11">
   <title>Quarto e Plotly</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -419,7 +420,7 @@ Matheus Augusto
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
+  <p class="date">2024-06-11</p>
 </section>
 <section id="section" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title"></h2>
@@ -438,7 +439,7 @@ Matheus Augusto
 </section>
 <section id="o-que-é-quarto" class="slide level2">
 <h2>O que é Quarto?</h2>
-<p>É uma ferramenta que combina a facilidade do Markdown com flexibilidade do poder de programação. Ele é projetado para simplificar o processo de criação de documentos dinâmicos e interativos, como relatórios, artigos científicos, apresentações e livros, integrando dados, códigos e visualizações de maneira agradável.</p>
+<p>É uma ferramenta que combina flexibilidade e interatividade. Ele é projetado para simplificar o processo de criação de documentos dinâmicos e interativos, como relatórios, artigos científicos, apresentações e livros, integrando dados, códigos e visualizações de maneira agradável.</p>
 </section>
 <section id="por-que-usar-quarto" class="slide level2">
 <h2>Por que usar Quarto?</h2>
@@ -499,7 +500,7 @@ Matheus Augusto
 </ul>
 </div>
 <div id="tabset-2-2">
-<p>O dash/traço <strong>-</strong> serve para fazer listas. - lista - lista 2 A maior parte da sintaxe do Quarto consiste em abrir blocos <strong>:::</strong> + {comando}</p>
+<p>O dash/traço <strong>-</strong> serve para fazer listas. - lista - lista 2 A maior parte da sintaxe do Quarto consiste em</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb2-1" class="hljs-ln-code"><a href=""></a>::: {.comando}</span>
 <span id="cb2-2" class="hljs-ln-code"><a href=""></a></span>
 <span id="cb2-3" class="hljs-ln-code"><a href=""></a>Texto Texto</span>
@@ -509,10 +510,10 @@ Matheus Augusto
 </div>
 </div>
 </section>
-<section id="funções" class="slide level2">
+<section id="funções" class="slide level2 scrollable">
 <h2>Funções</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Incremental</a></li><li><a href="#tabset-3-2">Fragments</a></li><li><a href="#tabset-3-3">Auto-Animate</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Incremental</a></li><li><a href="#tabset-3-2">Fragments</a></li><li><a href="#tabset-3-3">Columns</a></li><li><a href="#tabset-3-4">Auto-Animate</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
 <div>
@@ -521,44 +522,120 @@ Matheus Augusto
 <span id="cb3-2"><a href=""></a><span class="ss">- </span>**Isso é**</span>
 <span id="cb3-3"><a href=""></a><span class="ss">- </span>**Uma demonstração**</span>
 <span id="cb3-4"><a href=""></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li class="fragment"><strong>Isso é</strong></li>
-<li class="fragment"><strong>Uma demonstração</strong></li>
+<li class="fragment"><p><strong>Isso é</strong></p></li>
+<li class="fragment"><p><strong>Uma demonstração</strong></p></li>
 </ul>
 </div>
 </div>
 <div id="tabset-3-2">
 <p>Basicamente consiste em diferentes tipos de revelação de elementos ou destaque</p>
-<pre><code>::: {.fragment .highlight-red}
-Destaque
-:::
-
-::: {.fragment .fade-in}
-Fade-in
-:::</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href=""></a>::: {.fragment .highlight-red}</span>
+<span id="cb4-2"><a href=""></a>Destaque</span>
+<span id="cb4-3"><a href=""></a>:::</span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a>::: {.fragment .fade-in-}</span>
+<span id="cb4-6"><a href=""></a>Fade-in</span>
+<span id="cb4-7"><a href=""></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment highlight-red">
 <p>Destaque</p>
 </div>
-<div class="fragment fade-in">
+<div class="fragment fade-in-">
 <p>Fade-in</p>
 </div>
 </div>
 <div id="tabset-3-3">
-<p>É uma ferramenta poderosa e simples de usar. Você precisa apenas fornecer os parâmetros, e ela preencherá as lacunas criando uma animação fluida e interessante. #### Comandos importantes - <strong>Width</strong>: Altura. - <strong>Height</strong>: Largura. - <strong>Margin</strong>: Margem ao redor de algum dos quatro cantos do slide.</p>
-<pre><code>::: {style="margin-top: 100px;"}
-teste
-::: {style="margin-bot: 300px;"}
-teste
-::: {style="margin-right: 400px;"}</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href=""></a>::: {.columns}</span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a>::: {.column width="50%"}</span>
+<span id="cb5-4"><a href=""></a></span>
+<span id="cb5-5"><a href=""></a>Coluna 1</span>
+<span id="cb5-6"><a href=""></a>:::</span>
+<span id="cb5-7"><a href=""></a></span>
+<span id="cb5-8"><a href=""></a>::: {.column width="50%"}</span>
+<span id="cb5-9"><a href=""></a></span>
+<span id="cb5-10"><a href=""></a>Coluna 2</span>
+<span id="cb5-11"><a href=""></a></span>
+<span id="cb5-12"><a href=""></a>:::</span>
+<span id="cb5-13"><a href=""></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Coluna 1</p>
+</div><div class="column" style="width:50%;">
+<p>Coluna 2</p>
 </div>
 </div>
 </div>
+<div id="tabset-3-4">
+<div>
+<h4 id="ferramenta-poderosa">Ferramenta Poderosa</h4>
+<p>É uma ferramenta poderosa e simples de usar. É necessário fornecer os parâmetros, e ela preencherá as lacunas criando uma animação fluida e interessante.</p>
+<h4 id="comandos-importantes">Comandos importantes</h4>
+<ul>
+<li class="fragment"><strong>Width</strong>: Altura.</li>
+<li class="fragment"><strong>Height</strong>: Largura.</li>
+<li class="fragment"><strong>Margin</strong>: Margem ao redor de algum dos quatro cantos do slide.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="demonstração-da-animação-autómatica" class="title-slide slide level1 center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">Demonstração da animação autómatica</h1>
+
+</section>
+<section id="section-2" class="slide level2" style="margin-top: 100px;" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<p>Boa Tarde!!</p>
+</section>
+<section id="section-3" class="slide level2" style="margin-top: 200px; font-size: 3em; color: red;" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<p>Boa Tarde!!</p>
+</section>
+<section id="section-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<div style="margin-top: 200px; font-size: 3em; color: Blue;">
+<p>Bom Dia!!</p>
+</div>
+<div style="margin-top: 200px; font-size: 3em; color: red;">
+<p>Boa Tarde!!</p>
+</div>
+</section>
+<section id="código-1" class="slide level2">
+<h2>Código 1</h2>
+
+<img data-src="imagens/demo1.png" style="width:50.0%" class="r-stretch"></section></section>
+<section>
+<section id="plotly" class="title-slide slide level1 center">
+<h1>Plotly</h1>
+
+</section>
+<section id="section-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<div style="margin-top: 100px;">
+<p>Plotly</p>
+</div>
+</section>
+<section id="section-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<div style="margin-top: 200px; font-size: 3em; color: #0f1113;">
+<p>Plotly</p>
+</div>
+<div style="text-align: right; margin-top: -300px;">
+<p><img src="imagens/plotly.png" alt="Logo" style="width:500px;"></p>
+</div>
+</section></section>
+<section id="o-que-é-plotly" class="title-slide slide level1 center">
+<h1>O que é Plotly</h1>
+<p>Plotly tem o objetivo de ser um framework Interativo para permitir uma análise gráfica mais profunda e mais prática de ser programada.</p>
 <div class="quarto-auto-generated-content">
 <p><img src="imagens/quarto.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>Uma apresentação de ferramentas</p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -769,6 +846,82 @@ teste
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
