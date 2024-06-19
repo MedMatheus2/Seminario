@@ -1,0 +1,356 @@
+---
+title: "Plotly - Matheus"
+format: html
+editor: visual
+---
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+# Documentação do Pacote
+
+<https://cran.r-project.org/web/packages/plotly/plotly.pdf>
+
+# Limpar o 'enviroment' do Rstudio
+
+```{r}
+rm(list = ls())
+```
+
+# Instalando o pacote 'pacman' e o usando para instalar e carregar o pacote 'plotly'
+
+```{r}
+install.packages('pacman')
+pacman::p_load(plotly)
+
+
+```
+
+# Para criar um objeto plotly usamos a função: plot_ly()
+
+# A função 'plot_ly()' não tem argumentos estritamente obrigatórios. A seguir uma lista dos mais comuns:
+
+## Começamos por 'data = ' , 'x = ' e 'y = 'que definem respectivamente a base de dados(dataframe ou lista)e os valores dos eixos x e y(que devem vir acompanhados de '\~').
+
+```{r}
+p <- plot_ly(data = mtcars,
+             x = ~wt,
+             y = ~mpg)
+p
+```
+
+## O argumento 'type' especifica o tipo de gráfico que queremos como 'histogramas',' de dispersão','de barras','de calor'...
+
+```{r}
+p <- plot_ly(data = mtcars,
+             x = ~wt,
+             y = ~mpg,
+             type = 'histogram')
+p
+```
+
+## Alguns gráficos possuem funções próprias. Como é o exemplo dos gráficos do tipo 'scatter' que possuem, por exemplo, a função 'mode = '. O qual, pode especificar seu modo de exibição.
+
+```{r}
+p <- plot_ly(data = mtcars,
+             x = ~wt,
+             y = ~mpg,
+             type = 'scatter',
+             mode = 'lines')
+p
+```
+
+## 'Marker' e 'Color'
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x = ~wt,
+             y = ~mpg,
+             type = 'scatter',
+             mode = 'lines+ marker',
+             marker = list(color = 'red', size = 10))
+p
+```
+
+### O atributo marker é usado para controlar as propriedades visuais dos marcadores. Pode conter várias propriedades, incluindo 'color' e 'size'.
+
+### Ao invés dos pontos de dados é possível transformar as próprias linhas
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x = ~wt,
+             y = ~mpg,
+             type = 'scatter',
+             mode = 'lines+ marker',
+             line = list(color = 'red'),
+             marker = list( size = 10))
+p
+```
+
+### Outra forma de mudar o parâmetro das cores, seria usar a função'color' acompanhada de 'I', a qual serve para não escalar a cor escolhida para todo o gráfico e sim apenas os marcadores.
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x = ~wt,
+             y = ~mpg,
+             type = 'scatter',
+             mode = 'markers',
+             color = I('black'))
+p
+
+```
+
+### Também é possível definir a escala de cores baseado em uma váriavel fatorial. Ou seja, cada ponto será colorido com base no argumento de escolha, no caso o 'cyl'.
+
+```{r}
+p = plot_ly(data = mtcars,
+            x = ~wt,
+            y = ~mpg,
+            type = 'scatter',
+            mode = 'markers',
+            color = ~as.factor(cyl)
+            
+            )
+p
+```
+
+```{}
+```
+
+### Definir a escala de cores baseado em uma variável contínua
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x = ~wt,
+             y = ~mpg,
+             mode = 'markers',
+             type = 'scatter',
+             color = ~disp
+             )
+```
+
+## 'Symbols'
+
+```{r}
+library(plotly)
+
+p = plot_ly(data = mtcars,
+            x = ~wt,
+            y = ~mpg,
+            mode = 'markers',
+            symbol = ~as.factor(cyl),
+            symbols = c('circle','x','o'),
+            marker = list(size = 5)
+            )
+p
+
+```
+
+```{}
+```
+
+## Legendas
+
+### Esconder as Legendas
+
+```{r}
+library(tidyverse)
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers',
+             symbol = ~as.factor(cyl),
+             symbols = c('circle','x','o'),
+             marker = list(size = 5))
+p <- layout(p, showlegend = FALSE)
+p
+```
+
+### Mudar a orientação da legenda(abaixo do gráfico)
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers',
+             symbol = ~as.factor(cyl),
+             symbols = c('circle','x','o'),
+             marker = list(size = 5))
+p <- layout(p,legend = list(orientation = 'h') )
+p
+```
+
+### Mudar a orientação da legenda(Dentro do Gráfico)
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers',
+             symbol = ~as.factor(cyl),
+             symbols = c('circle','x','o'),
+             marker = list(size = 5))
+p <- layout(p,legend = list(x = 0.3, y = 0.9) )
+p
+```
+
+## Mudar a orientação da legenda(Fora do gráfico)
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers',
+             symbol = ~as.factor(cyl),
+             symbols = c('circle','x','o'),
+             marker = list(size = 5))
+p <- layout(p,legend = list(x = 1, y = 0.5) )
+p
+```
+
+## Títulos 
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers',
+             symbol = ~as.factor(cyl),
+             symbols = c('circle','x','o'),
+             marker = list(size = 5))
+p <- layout(p,
+            title = 'Gráfico de Dispersão usando R-plotly',
+            xaxis = list(title = 'Weight'),
+            yaxis = list(title = 'Miles per Galon'))
+p
+```
+
+## Customizando o texto ao passar o mouse
+
+```{r}
+library(plotly)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers',
+             hoverinfo = 'text',
+             text = paste ('Miles per Gallon:', mtcars$mpg,
+                           '<br>',
+                           'Weight',mtcars$wt)
+                           )
+                          p 
+                           
+```
+
+## Adicionar anotações
+
+### Adicionar anotações(ponto único)
+
+```{r}
+library(plotly)
+library(tidyverse)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers') %>%
+  add_annotations(
+    x = mtcars$mpg[which.max(mtcars$mpg)],
+    y = mtcars$wt[which.max(mtcars$mpg)],
+    text = 'BOM'
+  )
+p
+```
+
+### Adicionar anotações ( Em um lugar específico)
+
+```{r}
+library(plotly)
+library(tidyverse)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers') %>%
+  add_annotations(
+    xref = 'paper',
+    yref = 'paper',
+    x = 1,
+    y = 1,
+    text = 'Fonte dos Dados = Mtcars',
+      )
+p
+```
+
+### Adicionar anotações(Adicionar anotações em múltiplos pontos de dados)
+
+```{}
+```
+
+```{r}
+library(plotly)
+library(tidyverse)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers') %>%
+  add_annotations(x = mtcars$mpg[which.max(mtcars$mpg)],
+                  y=mtcars$wt[which.max(mtcars$mpg)],
+                  text = 'Alto')%>%
+  add_annotations(x = mtcars$mpg[which.min(mtcars$mpg)],
+                  y=mtcars$wt[which.min(mtcars$mpg)],
+                  text = 'Baixo'
+                  )
+p
+```
+
+### Estilizando as anotações
+
+```{r}
+library(plotly)
+library(tidyverse)
+p <- plot_ly(data = mtcars,
+             x=~wt,
+             y=~mpg,
+             type='scatter',
+             mode = 'markers') %>%
+  add_annotations(x = mtcars$mpg[which.max(mtcars$mpg)],
+                  y=mtcars$wt[which.max(mtcars$mpg)],
+                  text = 'Alto',
+                  font = list(color = 'green', family = 'sans serif', size = 20))
+p
+```
+
+## Gráfico de dispersão animado
+
+```{r}
+library(gapminder)
+library(tidyverse)
+library(plotly)
+p <- plot_ly(data = gapminder,
+             x = ~gdpPercap,
+             y = ~lifeExp,
+             frame = ~year)
+p <- layout(p,title = 'Gráfico de dispersão ao longo dos anos',
+            xaxis = list(title = 'GDP per capita(Escala - Log', type = 'log'),
+                         yaxis = list(title = 'Life Expectancy'))
+p
+```
